@@ -21,7 +21,7 @@ const Logs = () => {
 
   const columns = [
     { field: 'id', headerName: 'ID', width: 50 },
-    { field: 'deviceName', headerName: 'Device name', width: 200 },
+    { field: 'device', headerName: 'Name', width: 200 },
     { field: 'action', headerName: 'Action', width: 100 },
     { field: 'date', headerName: 'Date', width: 150 },
   ];

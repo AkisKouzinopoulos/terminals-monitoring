@@ -49,7 +49,7 @@ function App() {
   return (
     <Router>
       <Header
-        title="Endpoints Manager"
+        title="Terminals Monitoring App"
         onActionTerminals={actionTerminals}
       />
       <Routes>

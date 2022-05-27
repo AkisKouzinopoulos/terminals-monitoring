@@ -33,7 +33,7 @@ export const TerminalItem = ({ terminal, onSelectTerminal }) => {
         <StyledCard className={selected ? 'active' : ''}>
         <CardContent>
           <Typography sx={{ fontSize: 14 }} color="text.secondary">
-            {terminal.deviceName}
+            {terminal.device}
           </Typography>
           <Typography variant="h5" component="div">
             {terminal.ipAddress}
