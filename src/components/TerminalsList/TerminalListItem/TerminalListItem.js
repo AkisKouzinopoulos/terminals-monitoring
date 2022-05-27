@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Grid, CardActionArea } from "@mui/material";
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
@@ -6,6 +6,7 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import styled from '@emotion/styled';
+import TerminalsContext from '../../../context/Terminals/TerminalsContext';
 
 const StyledCard = styled.section`
   background: #b3cbd72b;
@@ -18,10 +19,15 @@ const StyledCard = styled.section`
 export const TerminalListItem = ({ terminal }) => {
 
   const [selected, setSelected] = useState(false);
+  const { selectedTerminals, dispatch } = useContext(TerminalsContext);
 
   const toggleSelection = () => {
     setSelected(!selected);
   }
+
+  const selectTerminal = () => {
+    dispatch({ type: 'SELECT_TERMINAL', payload: terminal });
+  };
 
   return (
     <Grid item xs={12} md={3}
@@ -29,18 +35,19 @@ export const TerminalListItem = ({ terminal }) => {
       justifyContent="center"
     >
       <Card sx={{ minWidth: 275 }}>
-        <StyledCard className={selected ? 'active' : ''}>
-        <CardContent>
-          <Typography sx={{ fontSize: 14 }} color="text.secondary">
-            {terminal.device}
-          </Typography>
-          <Typography variant="h5" component="div">
-            {terminal.ipAddress}
-          </Typography>
-          <Typography sx={{ fontSize: 14 }} component="div">
-            {terminal.operatingSystem}
-          </Typography>
-        </CardContent>
+        <StyledCard className={selected ? 'active' : ''}
+          onClick={selectTerminal}>
+          <CardContent>
+            <Typography sx={{ fontSize: 14 }} color="text.secondary">
+              {terminal.device}
+            </Typography>
+            <Typography variant="h5" component="div">
+              {terminal.ipAddress}
+            </Typography>
+            <Typography sx={{ fontSize: 14 }} component="div">
+              {terminal.operatingSystem}
+            </Typography>
+          </CardContent>
           <CardActions onClick={toggleSelection}>
             <Button size="small" color="primary">
               Select

@@ -10,7 +10,6 @@ const TerminalsApiClient = {
     const { data } = await axios.get('./sample-data.json', { // REPLACE WITH FAKE SERVER
       headers: HEADERS,
     });
-    console.log('da', data);
     return data;
   },
 };
