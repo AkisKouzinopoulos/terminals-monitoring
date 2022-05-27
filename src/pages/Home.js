@@ -3,6 +3,9 @@ import TerminalsList from '../components/TerminalsList/TerminalsList';
 import TerminalsApiClient from '../clients/TerminalsApiClient';
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
+import ErrorAlert from '../components/ErrorAlert/ErrorAlert';
+
+const errorMsg = 'Something went wrong, please try again later';
 
 const Home = ({ onSelectTerminal }) => {
   const [terminals, setTerminals] = useState([]);
@@ -25,6 +28,7 @@ const Home = ({ onSelectTerminal }) => {
   return (
     <>
       <Box display="flex" justifyContent="center">
+        {error && <ErrorAlert message={errorMsg}/>}
         {isLoading ? (
           <div>Loading...</div>
         )
