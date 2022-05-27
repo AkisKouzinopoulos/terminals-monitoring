@@ -7,7 +7,7 @@ import ErrorAlert from '../components/ErrorAlert/ErrorAlert';
 
 const errorMsg = 'Something went wrong, please try again later';
 
-const Home = ({ onSelectTerminal }) => {
+const Home = () => {
   const [terminals, setTerminals] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(false);
@@ -33,7 +33,7 @@ const Home = ({ onSelectTerminal }) => {
           <div>Loading...</div>
         )
           :
-          (<TerminalsList terminals={terminals} onSelectTerminal={onSelectTerminal} />)
+          (<TerminalsList terminals={terminals} />)
         }
       </Box>
     </>

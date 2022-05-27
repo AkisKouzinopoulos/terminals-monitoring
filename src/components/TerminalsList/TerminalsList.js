@@ -1,15 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Grid } from "@mui/material";
-import TerminalItem from "./TerminalItem/TerminalItem";
+import TerminalListItem from "./TerminalListItem/TerminalListItem";
 
-const TerminalsList = ({ terminals, onSelectTerminal }) => {
+const TerminalsList = ({ terminals }) => {
   return (
     <Grid container rowSpacing={1}>
       {terminals?.map(terminal => (
-        <TerminalItem
+        <TerminalListItem
           terminal={terminal}
           key={terminal.id}
-          onSelectTerminal={onSelectTerminal}
         />
       ))}
     </Grid>

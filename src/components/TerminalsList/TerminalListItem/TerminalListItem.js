@@ -15,7 +15,7 @@ const StyledCard = styled.section`
   }
 `;
 
-export const TerminalItem = ({ terminal, onSelectTerminal }) => {
+export const TerminalListItem = ({ terminal }) => {
 
   const [selected, setSelected] = useState(false);
 
@@ -24,11 +24,11 @@ export const TerminalItem = ({ terminal, onSelectTerminal }) => {
   }
 
   return (
-    <Grid item xs={12} md={4}
+    <Grid item xs={12} md={3}
       container
       justifyContent="center"
     >
-      <Card sx={{ minWidth: 275 }} onClick={() => onSelectTerminal(terminal)}>
+      <Card sx={{ minWidth: 275 }}>
         <StyledCard className={selected ? 'active' : ''}>
         <CardContent>
           <Typography sx={{ fontSize: 14 }} color="text.secondary">
@@ -52,4 +52,4 @@ export const TerminalItem = ({ terminal, onSelectTerminal }) => {
   )
 }
 
-export default TerminalItem;
+export default TerminalListItem;

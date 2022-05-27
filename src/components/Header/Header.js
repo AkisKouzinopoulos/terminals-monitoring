@@ -10,7 +10,7 @@ export const Header = ({ title, onActionTerminals }) => {
   return (
     <>
       {location.pathname === '/' &&
-        <Grid container spacing={1} sx={{ my: 2 }}>
+        <Grid container spacing={1} sx={{ my: 2 }} >
           <Grid item xs={12}
             container
             justifyContent="center">
@@ -20,10 +20,10 @@ export const Header = ({ title, onActionTerminals }) => {
           </Grid>
           <Grid item xs={4}
             container
+            display="right"
             justifyContent="center">
             <Button
               variant="outlined"
-              onClick={() => onActionTerminals('scan')}
             >Scan</Button>
           </Grid>
           <Grid item xs={4}
@@ -31,16 +31,15 @@ export const Header = ({ title, onActionTerminals }) => {
             justifyContent="center">
             <Button
               variant="outlined"
-              onClick={() => onActionTerminals('terminate')}
             >Terminate</Button>
           </Grid>
 
           <Grid item xs={4}
             container
             justifyContent="center">
-          <Button variant="contained">
+            <Button variant="contained">
               <Link to="/logs">View logs</Link>
-          </Button>
+            </Button>
           </Grid>
         </Grid>
       }
