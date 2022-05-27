@@ -5,7 +5,8 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import styled from "styled-components";
+// import styled from "styled-components";
+import styled from '@emotion/styled';
 
 const StyledCard = styled.section`
   background: #b3cbd72b;
