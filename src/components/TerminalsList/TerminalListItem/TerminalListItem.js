@@ -25,8 +25,14 @@ export const TerminalListItem = ({ terminal }) => {
     setSelected(!selected);
   }
 
-  const selectTerminal = () => {
-    dispatch({ type: 'SELECT_TERMINAL', payload: terminal });
+  const selectTerminal = () => {    
+    if(!selected) {
+      console.log('select');
+      dispatch({ type: 'SELECT_TERMINAL', payload: terminal });
+    } else {
+      console.log('DE-select');
+      dispatch({ type: 'DESELECT_TERMINAL', payload: terminal });
+    }
   };
 
   return (

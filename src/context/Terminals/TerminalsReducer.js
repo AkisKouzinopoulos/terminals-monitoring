@@ -4,7 +4,11 @@ const githubReducer = (state, action) => {
       return {
         ...state,
         selectedTerminals: [action.payload, ...state.selectedTerminals],
-        // isLoading: false,
+      }
+    case 'DESELECT_TERMINAL':
+      return {
+        ...state,
+        selectedTerminals: [...state.selectedTerminals.filter(item => item.id !== action.payload.id)],
       }
     case 'SCAN_TERMINAL':
       console.log('aaa', action.payload);
