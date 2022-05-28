@@ -1,22 +1,19 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Grid } from "@mui/material";
-import TerminalItem from "../../TerminalItem/TerminalItem";
+import TerminalListItem from "./TerminalListItem/TerminalListItem";
 
-class TerminalsList extends Component {
-  render() {
-    const { terminals, onSelectTerminal } = this.props;
-      return (
+const TerminalsList = ({ terminals }) => {
+  return (
     <Grid container rowSpacing={1}>
-      {terminals.map(terminal => (
-        <TerminalItem
+      {terminals?.map(terminal => (
+        <TerminalListItem
           terminal={terminal}
           key={terminal.id}
-          onSelectTerminal={onSelectTerminal}
         />
       ))}
     </Grid>
   )
-  }
+
 }
 
 export default TerminalsList;
