@@ -27,7 +27,6 @@ const githubReducer = (state, action) => {
       return {
         ...state,
         selectedTerminals: [],
-        // isLoading: false,
       }
     default:
       return state
