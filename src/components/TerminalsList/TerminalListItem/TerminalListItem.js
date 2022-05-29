@@ -18,19 +18,14 @@ const StyledCard = styled.section`
 
 export const TerminalListItem = ({ terminal }) => {
 
-  const [selected, setSelected] = useState(false);
-  const { selectedTerminals, dispatch } = useContext(TerminalsContext);
-
-  const toggleSelection = () => {
-    setSelected(!selected);
-  }
+  const { dispatch } = useContext(TerminalsContext);
 
   const selectTerminal = () => {    
-    if(!selected) {
-      console.log('select');
+    if(!terminal.selected) {
+      terminal.selected = true;
       dispatch({ type: 'SELECT_TERMINAL', payload: terminal });
     } else {
-      console.log('DE-select');
+      terminal.selected = false;
       dispatch({ type: 'DESELECT_TERMINAL', payload: terminal });
     }
   };
@@ -41,7 +36,7 @@ export const TerminalListItem = ({ terminal }) => {
       justifyContent="center"
     >
       <Card sx={{ minWidth: 275 }}>
-        <StyledCard className={selected ? 'active' : ''}
+        <StyledCard className={terminal.selected ? 'active' : ''}
           onClick={selectTerminal}>
           <CardContent>
             <Typography sx={{ fontSize: 14 }} color="text.secondary">
@@ -54,7 +49,9 @@ export const TerminalListItem = ({ terminal }) => {
               {terminal.operatingSystem}
             </Typography>
           </CardContent>
-          <CardActions onClick={toggleSelection}>
+          <CardActions 
+          // onClick={toggleSelection}
+          >
             <Button size="small" color="primary">
               Select
             </Button>
