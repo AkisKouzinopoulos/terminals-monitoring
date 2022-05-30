@@ -12,7 +12,7 @@ export const Header = ({ title }) => {
   const scanOrTerminate = (type) => {
     selectedTerminals.forEach(terminal => {
       terminal.actionType = type;
-      terminal.date = new Date().getTime();
+      terminal.date = new Date();
       terminal.selected = false;
       dispatch({ type: `${type}_TERMINAL`, payload: terminal });
       dispatch({ type: 'CLEAR_SELECTED_TERMINALS' });
