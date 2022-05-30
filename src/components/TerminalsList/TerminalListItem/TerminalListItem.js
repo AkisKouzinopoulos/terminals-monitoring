@@ -19,9 +19,9 @@ const StyledCard = styled.section`
 export const TerminalListItem = ({ terminal }) => {
 
   const { dispatch } = useContext(TerminalsContext);
-
-  const selectTerminal = () => {    
-    if(!terminal.selected) {
+  
+  const selectTerminal = () => {
+    if (!terminal.selected) {
       terminal.selected = true;
       dispatch({ type: 'SELECT_TERMINAL', payload: terminal });
     } else {
@@ -48,9 +48,11 @@ export const TerminalListItem = ({ terminal }) => {
             <Typography sx={{ fontSize: 14 }} component="div">
               {terminal.operatingSystem}
             </Typography>
+            <Typography sx={{ fontSize: 14 }} component="div">
+              Action: {terminal.actionType}
+            </Typography>
           </CardContent>
           <CardActions 
-          // onClick={toggleSelection}
           >
             <Button size="small" color="primary">
               Select

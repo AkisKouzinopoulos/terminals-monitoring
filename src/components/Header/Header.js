@@ -12,11 +12,10 @@ export const Header = ({ title }) => {
   const scanOrTerminate = (type) => {
     selectedTerminals.forEach(terminal => {
       terminal.actionType = type;
-      terminal.date = new Date().toLocaleString();
+      terminal.date = new Date().getTime();
       terminal.selected = false;
       dispatch({ type: `${type}_TERMINAL`, payload: terminal });
       dispatch({ type: 'CLEAR_SELECTED_TERMINALS' });
-      console.log('terminal', terminal);
     });
   }
 
@@ -48,12 +47,12 @@ export const Header = ({ title }) => {
               onClick={() => scanOrTerminate('TERMINATE')}
             >Terminate</Button>
           </Grid>
-
+          
           <Grid item xs={4}
             container
             justifyContent="center">
             <Button variant="contained">
-              <Link to="/logs">View logs</Link>
+              <Link to="/logs" onClick={() => dispatch({ type: `ADD_TERMINALS_TO_LOGS` })}>View logs</Link>
             </Button>
           </Grid>
         </Grid>

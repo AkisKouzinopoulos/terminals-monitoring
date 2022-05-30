@@ -6,21 +6,28 @@ import TerminalsContext from '../context/Terminals/TerminalsContext';
 
 const Logs = () => {
   const { scanedTerminals, terminatedTerminals } = useContext(TerminalsContext);
-  const terminals = [...scanedTerminals, ...terminatedTerminals];
+  const logedTerminals = [...scanedTerminals, ...terminatedTerminals];
+
   const columns = [
     { field: 'id', headerName: 'ID', width: 50 },
     { field: 'device', headerName: 'Name', width: 200 },
     { field: 'actionType', headerName: 'Action', width: 100 },
-    { field: 'date', headerName: 'Date', width: 150 },
+    {
+      field: 'date',
+      headerName: 'Date',
+      width: 250,
+      type: 'dateTime',
+      valueGetter: ({ value }) => value && new Date(value).toLocaleString(),
+    },
   ];
 
   return (
     <>
-      <div style={{ height: 400, width: '100%' }}>
+      <div style={{ height: 800, width: '100%' }}>
         <DataGrid
-          rows={terminals}
+          rows={logedTerminals}
           columns={columns}
-          getRowId={() => Math.floor(Math.random() * 100000000)}
+          getRowId={() => Math.floor(Math.random() * 100000000)} //  Crutial for making the data grid work and show the right results
           initialState={{
             sorting: {
               sortModel: [{ field: 'date', sort: 'desc' }],
