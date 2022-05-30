@@ -11,7 +11,6 @@ const githubReducer = (state, action) => {
         selectedTerminals: [...state.selectedTerminals.filter(item => item.id !== action.payload.id)],
       }
     case 'SCAN_TERMINAL':
-      console.log('aaa', action.payload);
       return {
         ...state,
         scanedTerminals: [action.payload, ...state.scanedTerminals],
@@ -27,7 +26,6 @@ const githubReducer = (state, action) => {
       return {
         ...state,
         selectedTerminals: [],
-        // isLoading: false,
       }
     default:
       return state
