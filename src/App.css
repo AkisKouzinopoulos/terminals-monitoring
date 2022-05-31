@@ -1,10 +1,12 @@
 .navbar {
   background: #f7f6fd;
-  position: 'fixed';
-  bottom: 0;
+  position: fixed;
+  top: 0;
   left: 0;
   right: 0;
   color: #FFF;
+  margin-bottom: 20px;
+  z-index: 1;
 }
 
 .navbar-icon {
@@ -75,4 +77,8 @@
   padding: 6px 14px;
   border-radius: 12px;
   box-shadow: -1px 0px 7px 2px #7273843d;
+}
+
+.terminals_list {
+  margin-top: 50px;
 }

@@ -26,38 +26,35 @@ export const Header = ({ title }) => {
   }
 
   return (
-    <>
 
-      <Stack
-        className="navbar"
-        direction="row"
-        alignItems="center"
-        spacing={4}
-      >
-        <div className="navbar-icon home_icon">          
-          <Link to="/" onClick={() => dispatch({ type: `ADD_TERMINALS_TO_LOGS` })} className="link">
-            <DesktopWindowsOutlinedIcon sx={{ fontSize: 32 }}/>
-          </Link>
-        </div>
-        {location.pathname === '/' &&
-          <>
-            <div className="navbar-icon scan_icon active"
-              onClick={() => scanOrTerminate('SCAN')}>
-              <WifiFindOutlinedIcon sx={{ fontSize: 32 }}/>
-            </div><div className="navbar-icon terminate_icon"
-              onClick={() => scanOrTerminate('TERMINATE')}>
-              <StopScreenShareOutlinedIcon sx={{ fontSize: 32 }}/>
-            </div>
-          </>
-        }
-        <div className="navbar-icon view-logs_icon">
-          <Link to="/logs" onClick={() => dispatch({ type: `ADD_TERMINALS_TO_LOGS` })} className="link">
-            <MonitorHeartOutlinedIcon sx={{ fontSize: 32 }}/>
-          </Link>
-        </div>
-      </Stack>
-
-    </>
+    <Stack
+      className="navbar"
+      direction="row"
+      alignItems="center"
+      spacing={4}
+    >
+      <div className="navbar-icon home_icon">
+        <Link to="/" onClick={() => dispatch({ type: `ADD_TERMINALS_TO_LOGS` })} className="link">
+          <DesktopWindowsOutlinedIcon sx={{ fontSize: 32 }} />
+        </Link>
+      </div>
+      {location.pathname === '/' &&
+        <>
+          <div className="navbar-icon scan_icon active"
+            onClick={() => scanOrTerminate('SCAN')}>
+            <WifiFindOutlinedIcon sx={{ fontSize: 32 }} />
+          </div><div className="navbar-icon terminate_icon"
+            onClick={() => scanOrTerminate('TERMINATE')}>
+            <StopScreenShareOutlinedIcon sx={{ fontSize: 32 }} />
+          </div>
+        </>
+      }
+      <div className="navbar-icon view-logs_icon">
+        <Link to="/logs" onClick={() => dispatch({ type: `ADD_TERMINALS_TO_LOGS` })} className="link">
+          <MonitorHeartOutlinedIcon sx={{ fontSize: 32 }} />
+        </Link>
+      </div>
+    </Stack>
   )
 }
 

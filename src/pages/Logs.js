@@ -23,7 +23,7 @@ const Logs = () => {
 
   return (
     <>
-      <div style={{ height: 500, width: '100%' }}>
+      <div style={{ height: 500, width: '100%', marginTop: '90px' }}>
         <DataGrid
           rows={logedTerminals}
           columns={columns}
@@ -32,7 +32,7 @@ const Logs = () => {
             sorting: {
               sortModel: [{ field: 'date', sort: 'desc' }],
             },
-          }} />
+          }}/>
       </div>
       <Button variant="contained">
         <Link to="/">Go back</Link>

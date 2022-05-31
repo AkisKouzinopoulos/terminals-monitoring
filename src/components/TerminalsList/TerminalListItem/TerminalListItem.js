@@ -35,7 +35,7 @@ export const TerminalListItem = ({ terminal }) => {
   };
 
   return (
-    <Grid item xs={12} sm={6} md={4} lg={4}
+    <Grid item xs={12} sm={12} md={6} lg={6}
       justifyContent="center"
     >
       <Stack direction="column" className="terminal-box">
