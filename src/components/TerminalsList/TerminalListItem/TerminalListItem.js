@@ -1,9 +1,13 @@
 import React, { useState, useContext } from "react";
-import { Grid, CardActionArea } from "@mui/material";
+import Grid from "@mui/material/Grid";
+import WifiOffOutlinedIcon from '@mui/icons-material/WifiOffOutlined';
+import CardActionArea from "@mui/material/CardActionArea";
 import Card from '@mui/material/Card';
+import Stack from '@mui/material/Stack';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
+import Switch from '@mui/material/Switch';
 import Button from '@mui/material/Button';
 import styled from '@emotion/styled';
 import TerminalsContext from '../../../context/Terminals/TerminalsContext';
@@ -19,7 +23,7 @@ const StyledCard = styled.section`
 export const TerminalListItem = ({ terminal }) => {
 
   const { dispatch } = useContext(TerminalsContext);
-  
+
   const selectTerminal = () => {
     if (!terminal.selected) {
       terminal.selected = true;
@@ -31,35 +35,22 @@ export const TerminalListItem = ({ terminal }) => {
   };
 
   return (
-    <Grid item xs={12} md={3}
-      container
+    <Grid item xs={12} sm={6} md={4} lg={4}
       justifyContent="center"
     >
-      <Card sx={{ minWidth: 275 }}>
-        <StyledCard className={terminal.selected ? 'active' : ''}
-          onClick={selectTerminal}>
-          <CardContent>
-            <Typography sx={{ fontSize: 14 }} color="text.secondary">
-              {terminal.device}
-            </Typography>
-            <Typography variant="h5" component="div">
-              {terminal.ipAddress}
-            </Typography>
-            <Typography sx={{ fontSize: 14 }} component="div">
-              {terminal.operatingSystem}
-            </Typography>
-            <Typography sx={{ fontSize: 14 }} component="div">
-              Action: {terminal.actionType}
-            </Typography>
-          </CardContent>
-          <CardActions 
-          >
-            <Button size="small" color="primary">
-              Select
-            </Button>
-          </CardActions>
-        </StyledCard>
-      </Card>
+      <Stack direction="column" className="terminal-box">
+        <Stack className="terminal-box_header" spacing={2} direction="row" alignItems="center" justifyContent="space-between">
+          <div className="terminal-box_header_icon">
+            <WifiOffOutlinedIcon sx={{ fontSize: 26 }}/>
+          </div>
+          <Typography variant="h2" className="ip-address">{terminal.ipAddress}</Typography>
+          <Switch onChange={selectTerminal} />
+        </Stack>
+        <div className="terminal-box_content">
+          <Typography align="left" lineHeight={3} variant="h4">{terminal.device}</Typography>
+          <Typography align="right" variant="h6">{terminal.operatingSystem}</Typography>
+        </div>
+      </Stack>
     </Grid>
   )
 }

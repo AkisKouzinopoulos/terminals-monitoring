@@ -1,7 +1,13 @@
 import React, { useContext } from "react";
 import { Link } from 'react-router-dom';
-import { Button, Typography } from "@mui/material";
-import { Grid } from "@mui/material";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+import Grid from "@mui/material/Grid";
+import Stack from '@mui/material/Stack';
+import DesktopWindowsOutlinedIcon from '@mui/icons-material/DesktopWindowsOutlined';
+import MonitorHeartOutlinedIcon from '@mui/icons-material/MonitorHeartOutlined';
+import StopScreenShareOutlinedIcon from '@mui/icons-material/StopScreenShareOutlined';
+import WifiFindOutlinedIcon from '@mui/icons-material/WifiFindOutlined';
 import { useLocation } from 'react-router-dom';
 import TerminalsContext from '../../context/Terminals/TerminalsContext';
 
@@ -21,42 +27,36 @@ export const Header = ({ title }) => {
 
   return (
     <>
-      {location.pathname === '/' &&
-        <Grid container spacing={1} sx={{ my: 2 }} >
-          <Grid item xs={12}
-            container
-            justifyContent="center">
-            <Typography variant="h5" component="div">
-              {title}
-            </Typography>
-          </Grid>
-          <Grid item xs={4}
-            container
-            display="right"
-            justifyContent="center">
-            <Button
-              variant="outlined"
-              onClick={() => scanOrTerminate('SCAN')}
-            >Scan</Button>
-          </Grid>
-          <Grid item xs={4}
-            container
-            justifyContent="center">
-            <Button
-              variant="outlined"
-              onClick={() => scanOrTerminate('TERMINATE')}
-            >Terminate</Button>
-          </Grid>
-          
-          <Grid item xs={4}
-            container
-            justifyContent="center">
-            <Button variant="contained">
-              <Link to="/logs" onClick={() => dispatch({ type: `ADD_TERMINALS_TO_LOGS` })}>View logs</Link>
-            </Button>
-          </Grid>
-        </Grid>
-      }
+
+      <Stack
+        className="navbar"
+        direction="row"
+        alignItems="center"
+        spacing={4}
+      >
+        <div className="navbar-icon home_icon">          
+          <Link to="/" onClick={() => dispatch({ type: `ADD_TERMINALS_TO_LOGS` })} className="link">
+            <DesktopWindowsOutlinedIcon sx={{ fontSize: 32 }}/>
+          </Link>
+        </div>
+        {location.pathname === '/' &&
+          <>
+            <div className="navbar-icon scan_icon active"
+              onClick={() => scanOrTerminate('SCAN')}>
+              <WifiFindOutlinedIcon sx={{ fontSize: 32 }}/>
+            </div><div className="navbar-icon terminate_icon"
+              onClick={() => scanOrTerminate('TERMINATE')}>
+              <StopScreenShareOutlinedIcon sx={{ fontSize: 32 }}/>
+            </div>
+          </>
+        }
+        <div className="navbar-icon view-logs_icon">
+          <Link to="/logs" onClick={() => dispatch({ type: `ADD_TERMINALS_TO_LOGS` })} className="link">
+            <MonitorHeartOutlinedIcon sx={{ fontSize: 32 }}/>
+          </Link>
+        </div>
+      </Stack>
+
     </>
   )
 }

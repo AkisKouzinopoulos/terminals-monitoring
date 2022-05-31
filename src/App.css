@@ -1,0 +1,78 @@
+.navbar {
+  background: #f7f6fd;
+  position: 'fixed';
+  bottom: 0;
+  left: 0;
+  right: 0;
+  color: #FFF;
+}
+
+.navbar-icon {
+  padding: 20px;
+  text-align: center;
+}
+
+.home_icon {
+  background: #322a7c;
+  flex-grow: 1;
+  border-radius: 0 50px 50px 0;
+}
+
+.view-logs_icon {
+  background: #fca001;
+  flex-grow: 1;
+  border-radius: 50px 0 0 50px;
+}
+
+.scan_icon,
+.terminate_icon {
+  flex-grow: 2;
+  border-radius: 50px;
+}
+
+.scan_icon {
+  background: #87e0ef;
+}
+
+.terminate_icon {
+  background: #f25767;
+}
+
+.terminal-box {
+  width: 100%;
+  padding: 3px;
+  box-sizing: border-box;
+  border-radius: 20px;
+  background: #f7f6fd;
+  box-shadow: 0 0 0 2px #dddded inset;
+}
+
+.terminal-box_header {
+  background: #e7e7f7;
+  border-radius: 18px;
+  height: 50px;
+  padding: 2px 4px;
+}
+
+.terminal-box_header_icon {
+  background: #cbccde66;
+  color: #bcb9da;
+  border-radius: 14px;
+  padding: 8px 10px;
+}
+
+.terminal-box_content {
+  padding: 4px 10px;
+}
+
+.link {
+  color: #FFF;
+}
+
+.ip-address {
+  color: #4e506c;
+  background: #dbdeed;
+  padding: 6px 14px;
+  border-radius: 12px;
+  box-shadow: -1px 0px 7px 2px #7273843d;
+}
