@@ -9,7 +9,7 @@ const Logs = () => {
   const logedTerminals = [...scanedTerminals, ...terminatedTerminals];
 
   const columns = [
-    { field: 'id', headerName: 'ID', width: 50 },
+    { field: 'id', headerName: 'ID', width: 50, hide: true },
     { field: 'device', headerName: 'Name', width: 200 },
     { field: 'actionType', headerName: 'Action', width: 100 },
     {
