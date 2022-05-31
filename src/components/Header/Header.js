@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import { Link } from 'react-router-dom';
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import Grid from "@mui/material/Grid";
 import Stack from '@mui/material/Stack';
 import DesktopWindowsOutlinedIcon from '@mui/icons-material/DesktopWindowsOutlined';
 import MonitorHeartOutlinedIcon from '@mui/icons-material/MonitorHeartOutlined';
@@ -26,16 +25,18 @@ export const Header = ({ title }) => {
   }
 
   return (
-
     <Stack
       className="navbar"
       direction="row"
       alignItems="center"
+      justifyContent="space-around"
       spacing={4}
+      maxWidth="md"
     >
       <div className="navbar-icon home_icon">
         <Link to="/" onClick={() => dispatch({ type: `ADD_TERMINALS_TO_LOGS` })} className="link">
           <DesktopWindowsOutlinedIcon sx={{ fontSize: 32 }} />
+          <Typography variant="subtitle2" className="nav-icon_title">Terminals</Typography>
         </Link>
       </div>
       {location.pathname === '/' &&
@@ -43,15 +44,18 @@ export const Header = ({ title }) => {
           <div className="navbar-icon scan_icon active"
             onClick={() => scanOrTerminate('SCAN')}>
             <WifiFindOutlinedIcon sx={{ fontSize: 32 }} />
+          <Typography variant="subtitle2">Scan</Typography>
           </div><div className="navbar-icon terminate_icon"
             onClick={() => scanOrTerminate('TERMINATE')}>
             <StopScreenShareOutlinedIcon sx={{ fontSize: 32 }} />
+            <Typography variant="subtitle2">Stop</Typography>
           </div>
         </>
       }
       <div className="navbar-icon view-logs_icon">
         <Link to="/logs" onClick={() => dispatch({ type: `ADD_TERMINALS_TO_LOGS` })} className="link">
           <MonitorHeartOutlinedIcon sx={{ fontSize: 32 }} />
+          <Typography variant="subtitle2"> View logs</Typography>
         </Link>
       </div>
     </Stack>

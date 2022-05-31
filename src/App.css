@@ -1,35 +1,38 @@
+.main_container {
+  background: #f7f6fd;
+  padding: 0;
+  padding-top: 22px;
+  margin: 0;
+}
+
 .navbar {
   background: #f7f6fd;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
+  margin: 0 auto;
   color: #FFF;
   margin-bottom: 20px;
+  padding: 10px 0;
   z-index: 1;
 }
 
 .navbar-icon {
-  padding: 20px;
+  padding: 10px 20px;
   text-align: center;
+  min-width: 70px;
+  border-radius: 60px;
+  cursor: pointer;
 }
 
 .home_icon {
   background: #322a7c;
-  flex-grow: 1;
-  border-radius: 0 50px 50px 0;
+  
 }
 
 .view-logs_icon {
   background: #fca001;
-  flex-grow: 1;
-  border-radius: 50px 0 0 50px;
-}
-
-.scan_icon,
-.terminate_icon {
-  flex-grow: 2;
-  border-radius: 50px;
 }
 
 .scan_icon {
@@ -42,7 +45,7 @@
 
 .terminal-box {
   width: 100%;
-  padding: 3px;
+  padding: 4px;
   box-sizing: border-box;
   border-radius: 20px;
   background: #f7f6fd;
@@ -51,7 +54,7 @@
 
 .terminal-box_header {
   background: #e7e7f7;
-  border-radius: 18px;
+  border-radius: 17px;
   height: 50px;
   padding: 2px 4px;
 }
@@ -59,7 +62,7 @@
 .terminal-box_header_icon {
   background: #cbccde66;
   color: #bcb9da;
-  border-radius: 14px;
+  border-radius: 13px;
   padding: 8px 10px;
 }
 
@@ -69,13 +72,14 @@
 
 .link {
   color: #FFF;
+  text-decoration: none;
 }
 
 .ip-address {
   color: #4e506c;
   background: #dbdeed;
   padding: 6px 14px;
-  border-radius: 12px;
+  border-radius: 10px;
   box-shadow: -1px 0px 7px 2px #7273843d;
 }
 

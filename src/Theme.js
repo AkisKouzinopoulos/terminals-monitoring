@@ -53,8 +53,9 @@ export const theme = createTheme({
       fontSize: 16,
     },
     subtitle2: {
-      fontSize: 12,
-      fontWeight: 400,
+      fontSize: 14,
+      lineHeight: 1,
+      fontWeight: 300,
     },
     button: {
       fontSize: 16,
