@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@mui/material';
 import { DataGrid } from '@mui/x-data-grid';
+import ArrowBackOutlinedIcon from '@mui/icons-material/ArrowBackOutlined';
 import TerminalsContext from '../context/Terminals/TerminalsContext';
 
 const Logs = () => {
@@ -32,10 +33,13 @@ const Logs = () => {
             sorting: {
               sortModel: [{ field: 'date', sort: 'desc' }],
             },
-          }}/>
+          }} />
       </div>
-      <Button variant="contained">
-        <Link to="/">Go back</Link>
+      <Button
+        startIcon={<ArrowBackOutlinedIcon />}
+        variant="text"
+      >
+        <Link className="go-back_link" to="/">Go back</Link>
       </Button>
     </>
   )

@@ -75,12 +75,22 @@
   text-decoration: none;
 }
 
+.go-back_link {
+  color: #322a7c;
+  text-decoration: none;
+}
+
 .ip-address {
   color: #4e506c;
   background: #dbdeed;
   padding: 6px 14px;
   border-radius: 10px;
   box-shadow: -1px 0px 7px 2px #7273843d;
+  transition: all 0.2s ease-in-out;
+}
+
+.ip-address.selected {
+  background: #c6c6dc;
 }
 
 .terminals_list {

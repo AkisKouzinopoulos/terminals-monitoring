@@ -43,7 +43,7 @@ export const TerminalListItem = ({ terminal }) => {
           <div className="terminal-box_header_icon">
             <WifiOffOutlinedIcon sx={{ fontSize: 26 }}/>
           </div>
-          <Typography variant="h2" className="ip-address">{terminal.ipAddress}</Typography>
+          <Typography variant="h2" className={`ip-address ${terminal.selected ? 'selected' : ''}`}>{terminal.ipAddress}</Typography>
           <Switch onChange={selectTerminal} />
         </Stack>
         <div className="terminal-box_content">
