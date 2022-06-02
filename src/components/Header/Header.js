@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Link } from 'react-router-dom';
-import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+import Grid from "@mui/material/Grid";
 import Stack from '@mui/material/Stack';
 import DesktopWindowsOutlinedIcon from '@mui/icons-material/DesktopWindowsOutlined';
 import MonitorHeartOutlinedIcon from '@mui/icons-material/MonitorHeartOutlined';
@@ -10,8 +10,9 @@ import WifiFindOutlinedIcon from '@mui/icons-material/WifiFindOutlined';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import { useLocation } from 'react-router-dom';
 import TerminalsContext from '../../context/Terminals/TerminalsContext';
+import { Navbar, NavLink, ScanIcon, TerminateIcon } from './Header.styles';
 
-export const Header = ({ title }) => {
+export const Header = () => {
   const location = useLocation();
   const { selectedTerminals, scanedTerminals, terminatedTerminals, logs, dispatch } = useContext(TerminalsContext);
 
@@ -35,46 +36,57 @@ export const Header = ({ title }) => {
   }
 
   return (
-    <Stack
-      className="navbar"
-      direction="row"
-      alignItems="center"
-      justifyContent="space-around"
-      spacing={4}
-      maxWidth="md"
-    >
-      <div className="nav-link home_icon">
-        <Link to="/">
-          <DesktopWindowsOutlinedIcon sx={{ fontSize: 32 }} />
-          <Typography variant="subtitle2">Terminals</Typography>
-        </Link>
-      </div>
-      <div className="nav-link view-logs_icon">
-        <Link to='/logs' onClick={(e) => handleLinkToLogs(e)}>
-          <MonitorHeartOutlinedIcon sx={{ fontSize: 32 }} />
-          <Typography variant="subtitle2">View logs</Typography>
-        </Link>
-      </div>
-      <div className="nav-link about_icon">
-        <Link to="/about">
-          <InfoOutlinedIcon sx={{ fontSize: 32 }} />
-          <Typography variant="subtitle2">About</Typography>
-        </Link>
-      </div>
+    <Navbar container alignItems="center" spacing={0} maxWidth="lg" rowSpacing={2}>
+      <Grid item xs={12} sm={6}>
+        <Stack
+          direction="row"
+          alignItems="center"
+          justifyContent={{ xs: "space-around", sm: "flex-start" }}
+          spacing={8}
+        >
+          <NavLink>
+            <Link to="/">
+              <DesktopWindowsOutlinedIcon sx={{ fontSize: 26 }} />
+              <Typography variant="subtitle2">Terminals</Typography>
+            </Link>
+          </NavLink>
+          <NavLink>
+            <Link to='/logs' onClick={(e) => handleLinkToLogs(e)}>
+              <MonitorHeartOutlinedIcon sx={{ fontSize: 26 }} />
+              <Typography variant="subtitle2">View logs</Typography>
+            </Link>
+          </NavLink>
+          <NavLink>
+            <Link to="/about">
+              <InfoOutlinedIcon sx={{ fontSize: 26 }} />
+              <Typography variant="subtitle2">About</Typography>
+            </Link>
+          </NavLink>
+        </Stack>
+      </Grid>
       {location.pathname === '/' &&
-        <>
-          <div className="navbar-icon scan_icon active"
-            onClick={() => scanOrTerminate('SCAN')}>
-            <WifiFindOutlinedIcon sx={{ fontSize: 32 }} />
-            <Typography variant="subtitle2">Scan</Typography>
-          </div><div className="navbar-icon terminate_icon"
-            onClick={() => scanOrTerminate('TERMINATE')}>
-            <StopScreenShareOutlinedIcon sx={{ fontSize: 32 }} />
-            <Typography variant="subtitle2">Stop</Typography>
-          </div>
-        </>
+        <Grid item xs={12} sm={6}>
+          <Stack
+            direction="row"
+            alignItems="center"
+            justifyContent={{ xs: "space-around", sm: "flex-end" }}
+            spacing={4}
+          >
+            <ScanIcon
+              onClick={() => scanOrTerminate('SCAN')}>
+              <WifiFindOutlinedIcon sx={{ fontSize: 26 }} />
+              <Typography variant="subtitle2">Scan</Typography>
+            </ScanIcon>
+            <TerminateIcon
+              onClick={() => scanOrTerminate('TERMINATE')}>
+              <StopScreenShareOutlinedIcon sx={{ fontSize: 26 }} />
+              <Typography variant="subtitle2">Stop</Typography>
+            </TerminateIcon>
+          </Stack>
+        </Grid>
       }
-    </Stack>
+    </Navbar>
+
   )
 }
 
