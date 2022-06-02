@@ -4,7 +4,12 @@ import TerminalListItem from "./TerminalListItem/TerminalListItem";
 
 const TerminalsList = ({ terminals }) => {
   return (
-    <Grid container rowSpacing={1}>
+    <Grid
+      container
+      spacing={3}
+      justifyContent="center"
+      mt={6}
+    >
       {terminals?.map(terminal => (
         <TerminalListItem
           terminal={terminal}

@@ -8,6 +8,7 @@ export const TerminalsProvider = ({ children }) => {
     selectedTerminals: [],
     scanedTerminals: [],
     terminatedTerminals: [],
+    logs: [],
   };
 
   const [state, dispatch] = useReducer(terminalsReducer, initialState);

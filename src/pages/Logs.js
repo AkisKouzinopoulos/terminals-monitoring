@@ -2,14 +2,16 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@mui/material';
 import { DataGrid } from '@mui/x-data-grid';
+import ArrowBackOutlinedIcon from '@mui/icons-material/ArrowBackOutlined';
 import TerminalsContext from '../context/Terminals/TerminalsContext';
 
 const Logs = () => {
-  const { scanedTerminals, terminatedTerminals } = useContext(TerminalsContext);
-  const logedTerminals = [...scanedTerminals, ...terminatedTerminals];
+  const { scanedTerminals, terminatedTerminals, logs } = useContext(TerminalsContext);
+  // const logedTerminals = [...scanedTerminals, ...terminatedTerminals];
+  const logedTerminals = logs;
 
   const columns = [
-    { field: 'id', headerName: 'ID', width: 50 },
+    { field: 'id', headerName: 'ID', width: 50, hide: true },
     { field: 'device', headerName: 'Name', width: 200 },
     { field: 'actionType', headerName: 'Action', width: 100 },
     {
@@ -23,7 +25,7 @@ const Logs = () => {
 
   return (
     <>
-      <div style={{ height: 800, width: '100%' }}>
+      <div style={{ height: 500, width: '100%', marginTop: '90px' }}>
         <DataGrid
           rows={logedTerminals}
           columns={columns}
@@ -34,8 +36,11 @@ const Logs = () => {
             },
           }} />
       </div>
-      <Button variant="contained">
-        <Link to="/">Go back</Link>
+      <Button
+        startIcon={<ArrowBackOutlinedIcon />}
+        variant="text"
+      >
+        <Link className="go-back_link" to="/">Go back</Link>
       </Button>
     </>
   )
