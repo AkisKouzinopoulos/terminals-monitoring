@@ -61,13 +61,6 @@ body, html {
   opacity: 0.5;
 }
 
-.terminal-box_header {
-  background: #e7e7f7;
-  border-radius: 17px;
-  height: 50px;
-  padding: 2px 4px;
-}
-
 .terminal-box_header_icon {
   background: #cbccde66;
   color: #bcb9da;
@@ -77,10 +70,6 @@ body, html {
 
 .terminal-box_header_icon.online {
   background: #86ef9882;
-}
-
-.terminal-box_content {
-  padding: 4px 10px;
 }
 
 .link {

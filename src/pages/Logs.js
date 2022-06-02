@@ -6,9 +6,7 @@ import ArrowBackOutlinedIcon from '@mui/icons-material/ArrowBackOutlined';
 import TerminalsContext from '../context/Terminals/TerminalsContext';
 
 const Logs = () => {
-  const { scanedTerminals, terminatedTerminals, logs } = useContext(TerminalsContext);
-  // const logedTerminals = [...scanedTerminals, ...terminatedTerminals];
-  const logedTerminals = logs;
+  const { logs } = useContext(TerminalsContext);
 
   const columns = [
     { field: 'id', headerName: 'ID', width: 50, hide: true },
@@ -27,7 +25,7 @@ const Logs = () => {
     <>
       <div style={{ height: 500, width: '100%', marginTop: '90px' }}>
         <DataGrid
-          rows={logedTerminals}
+          rows={logs}
           columns={columns}
           getRowId={() => Math.floor(Math.random() * 100000000)} //  Crutial for making the data grid work and show the right results
           initialState={{

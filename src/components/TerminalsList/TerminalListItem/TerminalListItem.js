@@ -7,6 +7,7 @@ import Typography from '@mui/material/Typography';
 import Switch from '@mui/material/Switch';
 import styled from '@emotion/styled';
 import TerminalsContext from '../../../context/Terminals/TerminalsContext';
+import { TerminalBoxHeader, TerminalBoxContent } from './TerminalListItem.styles';
 
 const StyledCard = styled.section`
   background: #b3cbd72b;
@@ -34,7 +35,7 @@ export const TerminalListItem = ({ terminal }) => {
       justifyContent="center"
     >
       <Stack direction="column" className={`terminal-box ${terminal.status === 'Offline' ? 'offline' : ''}`}>
-        <Stack className="terminal-box_header" spacing={2} direction="row" alignItems="center" justifyContent="space-between">
+        <TerminalBoxHeader spacing={2} direction="row" alignItems="center" justifyContent="space-between">
           <div className={`terminal-box_header_icon ${terminal.status === 'Online' ? 'online' : ''}`}>
             {terminal.status === 'Online'
               ? <SignalCellularAltOutlinedIcon sx={{ fontSize: 26 }} />
@@ -48,11 +49,11 @@ export const TerminalListItem = ({ terminal }) => {
             disabled={terminal.status === 'Offline'}
             inputProps={{ 'aria-label': 'controlled' }} 
           />
-        </Stack>
-        <div className="terminal-box_content">
+        </TerminalBoxHeader>
+        <TerminalBoxContent>
           <Typography align="left" lineHeight={3} variant="h4">{terminal.device}</Typography>
           <Typography align="right" variant="h6">{terminal.operatingSystem}</Typography>
-        </div>
+        </TerminalBoxContent>
       </Stack>
     </Grid>
   )

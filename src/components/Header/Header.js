@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import { Link } from 'react-router-dom';
-import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import Stack from '@mui/material/Stack';
@@ -36,7 +35,7 @@ export const Header = ({ title }) => {
   }
 
   return (
-    <Grid container alignItems="center" spacing={0} className="navbar" maxWidth="md" rowSpacing={2}>
+    <Grid container alignItems="center" spacing={0} className="navbar" maxWidth="lg" rowSpacing={2}>
       <Grid item xs={12} sm={6}>
         <Stack
           direction="row"
