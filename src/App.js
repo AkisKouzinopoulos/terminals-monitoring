@@ -15,7 +15,7 @@ const App = () => {
   return (
     <TerminalsProvider>
       <ThemeProvider theme={theme}>
-        <Container maxWidth="md" className="main_container">
+        <Container className="main_container">
           <Router>
             <Header
               title="Terminals Monitoring App"
