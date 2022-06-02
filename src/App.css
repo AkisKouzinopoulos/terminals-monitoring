@@ -26,13 +26,17 @@
   cursor: pointer;
 }
 
-.home_icon {
-  background: #322a7c;
-  
+.view-logs_icon.inactive{
+  /* background: #fca001; */
+  pointer-events: none;
 }
 
-.view-logs_icon {
-  background: #fca001;
+.nav-link {
+  text-align: center;
+}
+
+.nav-link a, .nav-link svg {
+  color: #133676;
 }
 
 .scan_icon {
@@ -52,6 +56,10 @@
   box-shadow: 0 0 0 2px #dddded inset;
 }
 
+.terminal-box.offline {
+  opacity: 0.5;
+}
+
 .terminal-box_header {
   background: #e7e7f7;
   border-radius: 17px;
@@ -64,6 +72,10 @@
   color: #bcb9da;
   border-radius: 13px;
   padding: 8px 10px;
+}
+
+.terminal-box_header_icon.online {
+  background: #86ef9882;
 }
 
 .terminal-box_content {

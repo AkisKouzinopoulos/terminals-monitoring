@@ -22,10 +22,23 @@ const githubReducer = (state, action) => {
         terminatedTerminals: [action.payload, ...state.terminatedTerminals],
         // isLoading: false,
       }
+    case 'UPDATE_LOGS':
+      return {
+        ...state,
+        logs: [action.payload, ...state.logs],
+        // isLoading: false,
+      }
     case 'CLEAR_SELECTED_TERMINALS':
       return {
         ...state,
         selectedTerminals: [],
+      }
+    case 'CLEAR_STATE_TERMINALS':
+      return {
+        ...state,
+        selectedTerminals: [],
+        scanedTerminals: [],
+        terminatedTerminals: [],
       }
     default:
       return state

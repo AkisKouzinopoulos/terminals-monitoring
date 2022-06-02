@@ -6,8 +6,9 @@ import ArrowBackOutlinedIcon from '@mui/icons-material/ArrowBackOutlined';
 import TerminalsContext from '../context/Terminals/TerminalsContext';
 
 const Logs = () => {
-  const { scanedTerminals, terminatedTerminals } = useContext(TerminalsContext);
-  const logedTerminals = [...scanedTerminals, ...terminatedTerminals];
+  const { scanedTerminals, terminatedTerminals, logs } = useContext(TerminalsContext);
+  // const logedTerminals = [...scanedTerminals, ...terminatedTerminals];
+  const logedTerminals = logs;
 
   const columns = [
     { field: 'id', headerName: 'ID', width: 50, hide: true },

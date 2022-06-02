@@ -10,6 +10,8 @@ import MonitorHeartOutlinedIcon from '@mui/icons-material/MonitorHeartOutlined';
 import StopScreenShareOutlinedIcon from '@mui/icons-material/StopScreenShareOutlined';
 import WifiFindOutlinedIcon from '@mui/icons-material/WifiFindOutlined';
 import ErrorAlert from '../components/ErrorAlert/ErrorAlert';
+import TerminalsContext from '../context/Terminals/TerminalsContext';
+
 
 const errorMsg = 'Something went wrong, please try again later';
 
@@ -17,6 +19,9 @@ const Home = () => {
   const [terminals, setTerminals] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(false);
+
+  const { dispatch } = useContext(TerminalsContext);
+
 
   useEffect(() => {
     TerminalsApiClient.getTerminals()
@@ -29,6 +34,7 @@ const Home = () => {
         setError(true);
         setIsLoading(false);
       });
+    dispatch({ type: 'CLEAR_STATE_TERMINALS' });
   }, []);
 
   return (

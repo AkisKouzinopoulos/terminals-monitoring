@@ -1,14 +1,10 @@
 import React, { useState, useContext } from "react";
 import Grid from "@mui/material/Grid";
 import WifiOffOutlinedIcon from '@mui/icons-material/WifiOffOutlined';
-import CardActionArea from "@mui/material/CardActionArea";
-import Card from '@mui/material/Card';
+import SignalCellularAltOutlinedIcon from '@mui/icons-material/SignalCellularAltOutlined';
 import Stack from '@mui/material/Stack';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import Switch from '@mui/material/Switch';
-import Button from '@mui/material/Button';
 import styled from '@emotion/styled';
 import TerminalsContext from '../../../context/Terminals/TerminalsContext';
 
@@ -21,7 +17,6 @@ const StyledCard = styled.section`
 `;
 
 export const TerminalListItem = ({ terminal }) => {
-
   const { dispatch } = useContext(TerminalsContext);
 
   const selectTerminal = () => {
@@ -38,13 +33,21 @@ export const TerminalListItem = ({ terminal }) => {
     <Grid item xs={12} sm={12} md={6} lg={6}
       justifyContent="center"
     >
-      <Stack direction="column" className="terminal-box">
+      <Stack direction="column" className={`terminal-box ${terminal.status === 'Offline' ? 'offline' : ''}`}>
         <Stack className="terminal-box_header" spacing={2} direction="row" alignItems="center" justifyContent="space-between">
-          <div className="terminal-box_header_icon">
-            <WifiOffOutlinedIcon sx={{ fontSize: 26 }}/>
+          <div className={`terminal-box_header_icon ${terminal.status === 'Online' ? 'online' : ''}`}>
+            {terminal.status === 'Online'
+              ? <SignalCellularAltOutlinedIcon sx={{ fontSize: 26 }} />
+              : <WifiOffOutlinedIcon sx={{ fontSize: 26 }} />
+            }
           </div>
           <Typography variant="h2" className={`ip-address ${terminal.selected ? 'selected' : ''}`}>{terminal.ipAddress}</Typography>
-          <Switch onChange={selectTerminal} />
+          <Switch
+            checked={terminal.selected || false}
+            onChange={selectTerminal}
+            disabled={terminal.status === 'Offline'}
+            inputProps={{ 'aria-label': 'controlled' }} 
+          />
         </Stack>
         <div className="terminal-box_content">
           <Typography align="left" lineHeight={3} variant="h4">{terminal.device}</Typography>
