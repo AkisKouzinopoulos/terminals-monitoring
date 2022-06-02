@@ -1,9 +1,18 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { Button } from '@mui/material';
+import Button from '@mui/material/Button';
+import styled from '@emotion/styled';
 import { DataGrid } from '@mui/x-data-grid';
 import ArrowBackOutlinedIcon from '@mui/icons-material/ArrowBackOutlined';
 import TerminalsContext from '../context/Terminals/TerminalsContext';
+
+const GoBackLink = styled(Button)`
+  color: #322a7c;
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+`;
 
 const Logs = () => {
   const { logs } = useContext(TerminalsContext);
@@ -34,12 +43,12 @@ const Logs = () => {
             },
           }} />
       </div>
-      <Button
+      <GoBackLink
         startIcon={<ArrowBackOutlinedIcon />}
         variant="text"
       >
-        <Link className="go-back_link" to="/">Go back</Link>
-      </Button>
+        <Link to="/">Go back</Link>
+      </GoBackLink>
     </>
   )
 }

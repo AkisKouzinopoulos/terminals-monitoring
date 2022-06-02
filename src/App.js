@@ -3,6 +3,7 @@ import React from 'react';
 import Container from '@mui/material/Container';
 import { ThemeProvider } from '@mui/material/styles';
 import { theme } from './Theme';
+import styled from '@emotion/styled';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import { Header } from './components/Header/Header';
 import Home from './pages/Home';
@@ -10,11 +11,18 @@ import Logs from './pages/Logs';
 import About from './pages/About';
 import { TerminalsProvider } from './context/Terminals/TerminalsContext';
 
+const MainContainer = styled(Container)`
+  background: #f7f6fd;
+  padding: 0;
+  padding-top: 22px;
+  margin: 0;
+`;
+
 const App = () => {
   return (
     <TerminalsProvider>
       <ThemeProvider theme={theme}>
-        <Container className="main_container">
+        <MainContainer>
           <Router>
             <Header
               title="Terminals Monitoring App"
@@ -30,7 +38,7 @@ const App = () => {
               <Route path='/about' element={<About />} />
             </Routes>
           </Router>
-        </Container>
+        </MainContainer>
       </ThemeProvider>
     </TerminalsProvider>
   );
