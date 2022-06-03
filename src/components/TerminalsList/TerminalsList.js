@@ -2,9 +2,8 @@ import React, { useState } from 'react';
 import Grid from "@mui/material/Grid";
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
-import AccountCircle from '@mui/icons-material/AccountCircle';
+import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import TerminalListItem from "./TerminalListItem/TerminalListItem";
-import { queryAllByAltText } from '@testing-library/react';
 
 const TerminalsList = ({ terminals }) => {
   const [query, setQuery] = useState('');
@@ -15,13 +14,12 @@ const TerminalsList = ({ terminals }) => {
 
     if (keyword !== '') {
       const results = terminals.filter((terminal) => {
-        return terminal.device.toLowerCase().startsWith(keyword.toLowerCase());
-        // Use the toLowerCase() method to make it case-insensitive
+        return terminal.device.toLowerCase().includes(keyword.toLowerCase())
+          || terminal.ipAddress.includes(keyword);
       });
       setFoundTerminals(results);
     } else {
       setFoundTerminals(terminals);
-      // If the text field is empty, show all users
     }
 
     setQuery(keyword);
@@ -35,16 +33,17 @@ const TerminalsList = ({ terminals }) => {
       mt={{ xs: 15, sm: 6 }}
     >
       <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
-        <AccountCircle sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
+        <SearchOutlinedIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
         <TextField
           id="searchInput"
-          label="Search"
+          label="Search by terminal name or IP"
           variant="standard"
           value={query}
           onChange={filterQuery}
+          sx={{width: 220}}
         />
       </Box>
-      {terminals?.map(terminal => (
+      {foundTerminals?.map(terminal => (
         <TerminalListItem
           terminal={terminal}
           key={terminal.id}

@@ -7,8 +7,9 @@ import SignalCellularAltOutlinedIcon from '@mui/icons-material/SignalCellularAlt
 import TerminalsContext from '../../../context/Terminals/TerminalsContext';
 import { TerminalBox, TerminalBoxHeader, TerminalBoxContent, TerminalBoxHeaderIcon, IpAddress } from './TerminalListItem.styles';
 
-export const statusIsOnline = (status) => {
-  return status === 'Online' ? true : false;
+
+const statusIsOnline = (status) => {
+  return status === 'Online';
 }
 
 export const TerminalListItem = ({ terminal }) => {
@@ -24,17 +25,13 @@ export const TerminalListItem = ({ terminal }) => {
     }
   };
 
-  const StatusIcon = () => {
-    return statusIsOnline(terminal.status)
-      ? <SignalCellularAltOutlinedIcon sx={{ fontSize: 26 }} />
-      : <WifiOffOutlinedIcon sx={{ fontSize: 26 }} />
-  }
+  const StatusIcon = () => statusIsOnline(terminal.status)
+    ? <SignalCellularAltOutlinedIcon sx={{ fontSize: 26 }} />
+    : <WifiOffOutlinedIcon sx={{ fontSize: 26 }} />
 
   return (
-    <Grid item xs={12} sm={12} md={6} lg={6}
-      justifyContent="center"
-    >
-      <TerminalBox direction="column" status={statusIsOnline(terminal.status)}>
+    <Grid item xs={12} sm={12} md={6} lg={6} justifyContent="center" >
+      <TerminalBox direction="column" status={+statusIsOnline(terminal.status)}> {/* resolve console error */}
         <TerminalBoxHeader spacing={2} direction="row" alignItems="center" justifyContent="space-between">
           <TerminalBoxHeaderIcon status={statusIsOnline(terminal.status)}>
             {StatusIcon()}
@@ -44,7 +41,7 @@ export const TerminalListItem = ({ terminal }) => {
             checked={terminal.selected || false}
             onChange={selectTerminal}
             disabled={!statusIsOnline(terminal.status)}
-            inputProps={{ 'aria-label': 'controlled' }} 
+            inputProps={{ 'aria-label': 'controlled' }}
           />
         </TerminalBoxHeader>
         <TerminalBoxContent>
