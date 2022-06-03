@@ -36,7 +36,7 @@ export const Header = () => {
   }
 
   return (
-    <Navbar container alignItems="center" spacing={0} maxWidth="lg" rowSpacing={2}>
+    <Navbar container alignItems="center" spacing={0} maxWidth="lg" rowSpacing={{xs: 2, sm: 0}}>
       <Grid item xs={12} sm={6}>
         <Stack
           direction="row"

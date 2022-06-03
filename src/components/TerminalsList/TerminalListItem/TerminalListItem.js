@@ -4,12 +4,12 @@ import Typography from '@mui/material/Typography';
 import Switch from '@mui/material/Switch';
 import WifiOffOutlinedIcon from '@mui/icons-material/WifiOffOutlined';
 import SignalCellularAltOutlinedIcon from '@mui/icons-material/SignalCellularAltOutlined';
-import styled from '@emotion/styled';
 import TerminalsContext from '../../../context/Terminals/TerminalsContext';
 import { TerminalBox, TerminalBoxHeader, TerminalBoxContent, TerminalBoxHeaderIcon, IpAddress } from './TerminalListItem.styles';
 
-export const statusIsOnline = (status) => {
-  return status === 'Online' ? true : false;
+
+const statusIsOnline = (status) => {
+  return status === 'Online';
 }
 
 export const TerminalListItem = ({ terminal }) => {
@@ -25,24 +25,23 @@ export const TerminalListItem = ({ terminal }) => {
     }
   };
 
+  const StatusIcon = () => statusIsOnline(terminal.status)
+    ? <SignalCellularAltOutlinedIcon sx={{ fontSize: 26 }} />
+    : <WifiOffOutlinedIcon sx={{ fontSize: 26 }} />
+
   return (
-    <Grid item xs={12} sm={12} md={6} lg={6}
-      justifyContent="center"
-    >
-      <TerminalBox direction="column" status={statusIsOnline(terminal.status)}>
+    <Grid item xs={12} sm={12} md={6} lg={6} justifyContent="center" >
+      <TerminalBox direction="column" status={+statusIsOnline(terminal.status)}> {/* resolve console error */}
         <TerminalBoxHeader spacing={2} direction="row" alignItems="center" justifyContent="space-between">
           <TerminalBoxHeaderIcon status={statusIsOnline(terminal.status)}>
-            {statusIsOnline(terminal.status)
-              ? <SignalCellularAltOutlinedIcon sx={{ fontSize: 26 }} />
-              : <WifiOffOutlinedIcon sx={{ fontSize: 26 }} />
-            }
+            {StatusIcon()}
           </TerminalBoxHeaderIcon>
           <IpAddress variant="h2" selected={terminal.selected}>{terminal.ipAddress}</IpAddress>
           <Switch
             checked={terminal.selected || false}
             onChange={selectTerminal}
             disabled={!statusIsOnline(terminal.status)}
-            inputProps={{ 'aria-label': 'controlled' }} 
+            inputProps={{ 'aria-label': 'controlled' }}
           />
         </TerminalBoxHeader>
         <TerminalBoxContent>
