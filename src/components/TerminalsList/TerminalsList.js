@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid } from "@mui/material";
+import Grid from "@mui/material/Grid";
 import TerminalListItem from "./TerminalListItem/TerminalListItem";
 
 const TerminalsList = ({ terminals }) => {
@@ -8,7 +8,7 @@ const TerminalsList = ({ terminals }) => {
       container
       spacing={3}
       justifyContent="center"
-      mt={6}
+      mt={{xs: 12, sm: 3 }}
     >
       {terminals?.map(terminal => (
         <TerminalListItem

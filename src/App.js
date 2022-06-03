@@ -12,17 +12,17 @@ import About from './pages/About';
 import { TerminalsProvider } from './context/Terminals/TerminalsContext';
 
 const MainContainer = styled(Container)`
-  background: #f7f6fd;
+  background: var(--lightGreyBg);
   padding: 0;
-  padding-top: 22px;
-  margin: 0;
+  padding-top: 42px;
+  margin: 0 auto;
 `;
 
 const App = () => {
   return (
     <TerminalsProvider>
       <ThemeProvider theme={theme}>
-        <MainContainer>
+        <MainContainer maxWidth="lg">
           <Router>
             <Header
               title="Terminals Monitoring App"

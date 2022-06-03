@@ -7,7 +7,7 @@ import ArrowBackOutlinedIcon from '@mui/icons-material/ArrowBackOutlined';
 import TerminalsContext from '../context/Terminals/TerminalsContext';
 
 const GoBackLink = styled(Button)`
-  color: #322a7c;
+  color: var(--darkBlue);
   a {
     text-decoration: none;
     color: inherit;

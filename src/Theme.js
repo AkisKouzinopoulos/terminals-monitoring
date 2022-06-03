@@ -62,10 +62,10 @@ export const theme = createTheme({
       fontWeight: 400,
     },
     body1: {
-      fontSize: 14,
+      fontSize: 16,
     },
     body2: {
-      fontSize: 16,
+      fontSize: 14,
     },
     caption: {
       fontSize: 14,
